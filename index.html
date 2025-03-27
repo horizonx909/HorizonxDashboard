@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamHorizonX - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        #countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TeamHorizonX</h1>
+        <p>Something amazing is coming soon. Stay tuned!</p>
+        <div id="countdown"></div>
+    </div>
+    <script>
+        function updateCountdown() {
+            const launchDate = new Date("2025-06-01T00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "We're Live!";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
